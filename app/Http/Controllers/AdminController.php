@@ -87,11 +87,11 @@ class AdminController extends Controller
 
     function delete(Request $request)
     {
-        // $deleted = DB::select("DELETE FROM carts WHERE id = $id");
-        // $book = book::find($request->id);
-        // if ($book) {
-        //     $book->delete();
-        // }
+        $deleted = DB::select("DELETE FROM carts WHERE id = $request->id");
+        $book = book::find($request->id);
+        if ($book) {
+            $book->delete();
+        }
 
         return redirect('admin/viewbook');
     }

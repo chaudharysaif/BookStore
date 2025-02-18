@@ -18,10 +18,10 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
                         <a class="nav-link" aria-current="page" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/books">Books</a>
+                        <a class="nav-link" href="/bookpage">Books</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/categorypage">Category</a>
@@ -45,11 +45,11 @@
                     </li>
                 </ul>
 
-                <div class="mx-2">
+                <div class="me-3">
                     <a href="/cartpage"><i class="bi bi-bag fs-4 text-dark"></i></a>
                 </div>
-
-                <div class="mx-2">
+    
+                <div class="me-3">
                     <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-dark"></i></a>
                 </div>
             </div>
@@ -63,16 +63,17 @@
         @foreach ($bookdata as $books)
             <div class="row p-2">
 
-                <div class="col-md-6 text-center m-auto">
-                    <img src="{{ asset('storage/' . $books->image) }}" width="60%">
+                <div class="col-md-5 d-flex justify-content-end m-auto">
+                    <img src="{{ asset('storage/' . $books->image) }}" width="70%">
                 </div>
 
                 <div class="col-md-6 m-auto">
                     <div class="card-body p-2">
-                        <h4 class="card-title fw-bold m-3">Name: {{ $books->name }}</h4>
-                        <h4 class="card-title m-3">Author:</h4>
-                        <h4 class="card-text m-3">Price: ₹ {{ $books->price }}</h4>
-
+                        <h5 class="card-title text-secondary m-3">{{ $books->category }}</h5>
+                        <h4 class="card-title fw-bold m-3">{{ $books->name }}</h4>
+                        <h6 class="card-title m-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum tempore sapiente natus quia, maiores officia facilis, vel vitae voluptates reprehenderit assumenda qui pariatur magnam! Hic nihil veritatis doloribus aperiam illum animi dolore dicta. Omnis quae harum, dolore non enim excepturi, dolorem quidem voluptas repellat tempora eaque libero illum doloribus dolor in quisquam. Nostrum praesentium numquam iusto corporis rem ipsum rerum.</h6>
+                        <h4 class="card-text m-3">₹ {{ $books->price }}.00 /-</h4>
+                        <h4 class="card-text m-3"><i class="bi bi-star"></i> <i class="bi bi-star"></i> <i class="bi bi-star"></i> <i class="bi bi-star"></i> <i class="bi bi-star"></i></h4>
                         <div class="mt-2">
                             <button class="btn btn-outline-secondary m-3" style="width: 50%"
                                 onclick = "bookid( {{ $books->id }} )">Add to

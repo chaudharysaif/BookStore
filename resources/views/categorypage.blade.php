@@ -18,10 +18,11 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65"
+                    width="150"></a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,11 +54,11 @@
                         <i class="bi bi-search"></i></button>
                 </form>
 
-                <div class="mx-2">
+                <div class="me-3">
                     <a href="/cartpage"><i class="bi bi-bag fs-4 text-dark"></i></a>
                 </div>
 
-                <div class="mx-2">
+                <div class="me-3">
                     <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-dark"></i></a>
                 </div>
             </div>
@@ -71,7 +72,7 @@
     </div>
 
 
-    <div class="container mt-4 p-0">
+    <div class="container mt-5 p-0">
         {{-- <div class="container p-0 d-flex row-cols-md-2 row m-auto">
             <div class="col-md-2">
                 <h4 class="text-center">Category</h4>
@@ -84,43 +85,52 @@
         </div> --}}
 
         <div class="container p-0 d-flex row-cols-md-2 row m-auto">
-            <div class="col-md-2" style="border: 1px solid #dadada; text-decoration:none">
+            <div class="col-md-2 p-1" style="border: 1px solid #dadada; text-decoration:none">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
 
+                    <li class="nav-item py-3 fw-semibold" style="background-color: #dadada">
+                        CATEGORIES
+                    </li>
                     <li class="nav-item mt-1">
                         <a class="nav-link" href="/categorypage">ALL</a>
                     </li>
                     <hr class="my-1">
-                    <li class="nav-item text-secondary">
-                        <a class="nav-link active" href="/categorypage/life">LIFE THOUGHT</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categorypage/life">LIFE THOUGHT</a>
                     </li>
                     <hr class="my-1">
-                    <li class="nav-item text-secondary">
+                    <li class="nav-item">
                         <a class="nav-link" href="/categorypage/manga">MANGA</a>
                     </li>
                     <hr class="my-1">
-                    <li class="nav-item text-secondary">
+                    <li class="nav-item">
                         <a class="nav-link" href="/categorypage/motivation">MOTIVATION</a>
                     </li>
                     <hr class="my-1">
 
-                    <li class="nav-item text-secondary">
+                    <li class="nav-item">
                         <a class="nav-link" href="/categorypage/biography">BIOGRAPHY</a>
                     </li>
                     <hr class="my-1">
-                    <li class="nav-item text-secondary">
+                    <li class="nav-item">
                         <a class="nav-link" href="/categorypage/romance">ROMANCE</a>
                     </li>
                     <hr class="my-1">
-                    <li class="nav-item text-secondary">
+                    <li class="nav-item">
                         <a class="nav-link" href="/categorypage/sports">SPORTS</a>
                     </li>
                     <hr class="my-1">
                 </ul>
             </div>
 
-            <div class="container m-0 col-md-10" style=" border:1px solid #dadada">
-                <div class="row row-cols-md-4 justify-content-start">
+            <div class="container m-0 col-md-10 p-1" style=" border:1px solid #dadada">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center" style="background-color: #dadada">
+                    <li class="nav-item py-3 fw-semibold" style="background-color: #dadada">
+                        BOOKS
+                    </li>
+                </ul>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                    {{-- <div class="row row-cols-md-4 justify-content-start"> --}}
 
                     @if (!empty($bookdata))
                         @foreach ($bookdata as $books)
@@ -131,7 +141,7 @@
                                         style="height: 70%; width:90%"></a>
                                 <div class="card-body p-2">
                                     <h6 class="card-title fw-bold">{{ $books->name }}</h6>
-                                    <p class="card-text m-1">₹ {{ number_format($books->price, 2) }}</p>
+                                    <p class="card-text m-1">₹ {{ number_format($books->price, 2) }} /-</p>
 
                                     <div class="mt-3">
                                         <button class="btn btn-outline-secondary" style="width:80%"

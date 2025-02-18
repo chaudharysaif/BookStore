@@ -18,10 +18,10 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,11 +54,11 @@
                         <i class="bi bi-search"></i></button>
                 </form>
 
-                <div class="mx-2">
-                    <a href="cartpage"><i class="bi bi-bag fs-4 text-dark"></i></a>
+                <div class="me-3">
+                    <a href="/cartpage"><i class="bi bi-bag fs-4 text-dark"></i></a>
                 </div>
-
-                <div class="mx-2">
+    
+                <div class="me-3">
                     <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-dark"></i></a>
                 </div>
             </div>
@@ -70,7 +70,8 @@
         Read, <br> the More You Know.”</h1>
 
     <div class="container mt-4 p-2" style="background-color: #f6f6f6">
-        <div class="row row-cols-md-4 m-auto justify-content-stretch">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {{-- <div class="row row-cols-md-4 m-auto justify-content-stretch"> --}}
 
             @foreach ($bookdata as $books)
                 <div class="col p-2 text-center">
@@ -79,7 +80,7 @@
                     <div class="card-body p-2">
                         <h6 class="card-title fw-bold">{{ $books->name }}</h6>
                         <div>
-                            <p class="card-text m-1">₹ {{ number_format($books->price, 2) }}</p>
+                            <p class="card-text m-1">₹ {{ number_format($books->price, 2) }} /-</p>
                         </div></a>
 
                         <div class="mt-3">

@@ -20,7 +20,7 @@
             color: black;
             text-align: center;
             padding: 1em;
-            margin-top: 10%;
+            margin-top: 5%;
         }
 
         header h1 {
@@ -72,10 +72,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -99,12 +99,12 @@
                     </li>
                 </ul>
 
-                <div class="mx-2">
-                    <a href="#"><i id="cart" class="bi bi-bag fs-4 text-dark"></i></a>
+                <div class="me-3">
+                    <a href="/cartpage"><i class="bi bi-bag fs-4 text-dark"></i></a>
                 </div>
-
-                <div class="mx-2">
-                    <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-secondary"></i></a>
+    
+                <div class="me-3">
+                    <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-dark"></i></a>
                 </div>
             </div>
         </div>
@@ -116,23 +116,13 @@
     </header>
 
     <main>
-        <section class="payment-option" id="creditCard">
+        <section class="payment-option w-50" id="creditCard">
             <h2>Credit Card</h2>
             <img src="/images/credit.jpg" alt="Credit Card Icon">
             <p>Securely pay with your credit card.</p>
             <a href="/creditcardpage">
                 <button onclick="selectPaymentOption()">Select</button></a>
         </section>
-
-        <section class="payment-option" id="paypal">
-            <h2>PayPal</h2>
-            <img src="/images/paypal.jpg" alt="PayPal Icon">
-            <p>Use your PayPal account for a quick and easy payment.</p>
-            <a href="/">
-                <button onclick="success()">Select</button></a>
-        </section>
-
-
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

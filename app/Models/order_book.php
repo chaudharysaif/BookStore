@@ -14,6 +14,6 @@ class order_book extends Model
 
     public function users()
     {
-        return $this->belongsTo(userdetail::class);
+        return $this->belongsTo(userdetail::class ,'userdetail_id');
     }
 }

@@ -17,7 +17,7 @@
                 <img src="/storage/books10.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">ZERO To ONE</h6>
-                    <p class="card-text m-1">₹ 250.00</p>
+                    <p class="card-text m-1">₹ 250.00 /-</p>
                     <a href=""> <button class="btn btn-success">Add to cart</button> </a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <img src="/storage/book2.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">The Book Of Lost Names</h6>
-                    <p class="card-text m-1">₹ 175.00</p>
+                    <p class="card-text m-1">₹ 175.00 /-</p>
                     <a href=""> <button class="btn btn-success">Add to cart</button> </a>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <img src="/storage/book3.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">RICH DAD POOR DAD</h6>
-                    <p class="card-text m-1">₹ 270.00</p>
+                    <p class="card-text m-1">₹ 270.00 /-</p>
                     <a href=""> <button class="btn btn-success">Add to cart</button> </a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <img src="/storage/book4.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">The Name Of The Wind</h6>
-                    <p class="card-text m-1">₹ 180.00</p>
+                    <p class="card-text m-1">₹ 180.00 /-</p>
                     <a href=""> <button class="btn btn-success">Add to cart</button> </a>
                 </div>
             </div>

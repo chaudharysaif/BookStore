@@ -19,10 +19,10 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,13 +46,14 @@
                     </li>
                 </ul>
 
-                <div class="mx-2">
-                    <a href="#"><i id="cart" class="bi bi-bag fs-4 text-dark"></i></a>
+                <div class="me-3">
+                    <a href="/cartpage"><i class="bi bi-bag fs-4 text-dark"></i></a>
                 </div>
-
-                <div class="mx-2">
-                    <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-secondary"></i></a>
+    
+                <div class="me-3">
+                    <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-dark"></i></a>
                 </div>
+                
             </div>
         </div>
     </nav>

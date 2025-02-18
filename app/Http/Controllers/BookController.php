@@ -11,12 +11,15 @@ use App\Models\book_cart;
 use App\Models\contact;
 use App\Models\cart;
 use App\Models\order_book;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
+use function Laravel\Prompts\select;
 
 class BookController extends Controller
 {
@@ -43,26 +46,26 @@ class BookController extends Controller
 
     function signup(Request $request)
     {
-        $request->validate([
-            'firstname' => 'required | min:3',
-            'lastname' => 'required | min:3',
-            'email' => 'required | email',
-            'password' => 'required | min:6 | confirmed',
-            'cpassword' => 'required | min:6 | same:password'
+        // $request->validate([
+        //     'firstname' => 'required | min:3',
+        //     'lastname' => 'required | min:3',
+        //     'email' => 'required | email',
+        //     'password' => 'required | min:6 | confirmed',
+        //     'cpassword' => 'required | min:6 | same:password'
 
-        ], [
-            //     'firstname.required' => 'username cant be empty',
-            //     'firstname.min' => 'name contain minimum 3 letter',
-            'email.email' => 'email should be in valid form',
+        // ], [
+        //     //     'firstname.required' => 'username cant be empty',
+        //     //     'firstname.min' => 'name contain minimum 3 letter',
+        //     'email.email' => 'email should be in valid form',
 
-        ]);
+        // ]);
 
-        // $to = $request->email;
-        // $subject = "Account Verification Link";
-        // $msg = "Hello $request->firstname,
-        //     To ensure the security of your account and enjoy the full benefits of BookStore";
+        $to = $request->email;
+        $subject = "Account Verification Link";
+        $msg = "Hello $request->firstname,
+            To ensure the security of your account and enjoy the full benefits of BookStore";
 
-        // Mail::to($to)->send(new loginEmail($msg, $subject));
+        Mail::to($to)->send(new loginEmail($msg, $subject));
 
         $user = new userdetail();
         $user->first_name = $request->firstname;
@@ -107,14 +110,23 @@ class BookController extends Controller
     {
         Session::get('id');
         $user_id = session('id');
-
         $addcart = new cart();
-        $addcart->book_id = $request->id;
-        $addcart->quantity = 1;
-        $addcart->user_id = $user_id;
-        $addcart->userdetail_id = $user_id;
-        $addcart->save();
 
+        $existCart = Cart::where('user_id', $user_id)
+            ->where('book_id', $request->id)
+            ->first();
+
+        if ($existCart) {
+            $addcart->increment('quantity');
+        } else {
+            $addcart->book_id = $request->id;
+            $addcart->quantity = 1;
+            $addcart->user_id = $user_id;
+            $addcart->userdetail_id = $user_id;
+            $addcart->save();
+        }
+
+        // Its ptional storing in book_cart for dummy data
         $addbookcart = new book_cart();
         $addbookcart->book_id = $request->id;
         $addbookcart->quantity = 1;
@@ -130,6 +142,7 @@ class BookController extends Controller
         $cartitems->quantity = $request->quantity;
         $cartitems->save();
 
+        // Its ptional storing in book_cart for dummy data
         $cartquantity = book_cart::where('cart_id', $request->cart_id)->get();
         foreach ($cartquantity as $cartquantities) {
             $cartquantities->quantity = $request->quantity;
@@ -143,7 +156,6 @@ class BookController extends Controller
     {
         Session::get('id');
         $user_id = session('id');
-        // $books = DB::select("SELECT * from books JOIN carts ON books.id = carts.book_id where carts.user_id = $user_id");
 
         $books = Book::select('books.*', 'carts.*') // Include carts data
             ->join('carts', 'books.id', '=', 'carts.book_id')
@@ -161,26 +173,54 @@ class BookController extends Controller
         // $user = userdetail::with('carts')->where('id',"1")->get();
         // return view('usercart', ['userdata' => $user]);
 
-        # Many to Many
-        // $book = cart::with('books')->find(28);
-        // return $book;
+        // Relationship with Where
+        // $user = userdetail::with('carts', 'books', 'order_books')
+        //     ->whereHas('order_books', function ($query) {
+        //         $query->where('order_no', '108722');
+        //     })->get();
+        // return $user;
 
-        $user = userdetail::with('order_books.books')->find($user_id);
-        // $order = order_book::where('userdetail_id' , $user_id)->get();
-        return $user;
+        $books = Book::all();
+        $sorted = $books->sortByDesc('id')->values();
+        $filtered = $sorted->where('price', ">=", 200);
+        $sum = $filtered->sum('price');
+        $count = $filtered->count();
+        return response()->json([
+            "data" => $filtered
+        ]);
 
-        // $book = order_book::with('books')->get();
-        // return $book;
+        // $bookcart = DB::table('order_books')
+        //     ->join('userdetails', 'order_books.userdetail_id', '=', 'userdetails.id')
+        //     ->join('books', 'order_books.userdetail_id', '=', 'books.id')
+        //     ->select(
+        //         'userdetails.*',
+        //         'books.*',
+        //         'order_books.*'
+        //     )
+        //     ->where('order_no', 112233)
+        //     ->get();
+        // return response()->json([
+        //     "data" => $bookcart
+        // ]);
 
-        // if (!$book) {
-        //     return view('usercart', ['bookdata' => null]);
-        // }
-        return view('dummydata', ['userdata' => $user]);
+        $bookcart = order_book::select('order_no', 'book_id', 'quantity', 'userdetail_id')->with(['users' => function ($query) {
+            $query->select('id', 'first_name', 'email');
+        }, 'books' => function ($query2) {
+            $query2->select('id', 'name', 'image', 'category');
+        }])
+            ->whereHas('users', function ($user) {
+                $user->where('id', '=', 1);
+            })
+            ->get();
+
+        return response()->json([
+            "data" => $bookcart
+        ]);
     }
+
 
     function delete(Request $request)
     {
-        // $deleted = DB::select("DELETE FROM carts WHERE id = $id");
         $cart = cart::find($request->id);
         if ($cart) {
             $cart->delete();
@@ -210,11 +250,6 @@ class BookController extends Controller
         return view('checkoutpage', ['bookdata' => $books]);
     }
 
-    // function creditcardpage(Request $request)
-    // {
-    //     $totalprice = $request->price;
-    //     return view('creditcardpage', ['totalprice' => $totalprice]);
-    // }
 
     function checkoutdetail(Request $request)
     {
