@@ -180,14 +180,25 @@ class BookController extends Controller
         //     })->get();
         // return $user;
 
-        $books = Book::all();
-        $sorted = $books->sortByDesc('id')->values();
-        $filtered = $sorted->where('price', ">=", 200);
-        $sum = $filtered->sum('price');
-        $count = $filtered->count();
+
+        $overrated = order_book::select('book_id', DB::raw('COUNT(book_id) as mostbuied'))
+            ->with(['books'])
+            ->groupBy('book_id')
+            ->orderByDesc('mostbuied')
+            ->first();
+
         return response()->json([
-            "data" => $filtered
+            "data" => $overrated
         ]);
+
+        // $books = Book::all();
+        // $sorted = $books->sortByDesc('id')->values();
+        // $filtered = $sorted->where('price', ">=", 200);
+        // $sum = $filtered->sum('price');
+        // $count = $filtered->count();
+        // return response()->json([
+        //     "data" => $filtered
+        // ]);
 
         // $bookcart = DB::table('order_books')
         //     ->join('userdetails', 'order_books.userdetail_id', '=', 'userdetails.id')

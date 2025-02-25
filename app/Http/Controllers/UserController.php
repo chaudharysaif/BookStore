@@ -85,6 +85,7 @@ class UserController extends Controller
         $student = Arr::flatten($arr);
         $student = Arr::shuffle($arr);
         $student = Arr::sort($arr);
+        $student = Arr::forget($arr, 'user1');
         $student = Arr::sortRecursive($arr);
         $student = Arr::wrap($arr);
         // $student = Arr::pull($arr , 'user2'); //Pull from og array
@@ -120,7 +121,6 @@ class UserController extends Controller
         $result = Arr::map($array, function ($value) {
             return $value * 5;
         });
-
 
         return response()->json([
             'data' => $result
