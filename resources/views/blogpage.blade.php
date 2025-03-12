@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid p-0">
-            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('/images/bookstorelogo.jpg') }}" height="65" width="150"></a>
             <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active" style="height: 600px">
 
-                <img src="/storage/bookhome.jpg" alt=""
+                <img src="/images/bookhome.jpg" alt=""
                     style="height: 100%; width:100%; background-size:contain">
 
                 <div class="container">
@@ -95,7 +95,7 @@
             </div>
             <div class="carousel-item" style="height: 600px">
 
-                <img src="/storage/bookcarousel2.jpg" alt=""
+                <img src="/images/bookcarousel2.jpg" alt=""
                     style="height: 100%; width:100%; background-size:contain">
 
                 <div class="container">

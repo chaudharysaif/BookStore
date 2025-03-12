@@ -13,10 +13,8 @@ class LoginCheck
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    
     public function handle(Request $request, Closure $next): Response
     {
-        // echo "Check logged in";
         return $next($request);
     }
 }

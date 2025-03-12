@@ -55,7 +55,7 @@
             margin-bottom: 10px;
         }
 
-        img {
+        #img {
             max-width: 100px;
             margin-bottom: 10px;
         }
@@ -74,7 +74,7 @@
 <body>
     <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid p-0">
-            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('images/bookstorelogo.jpg') }}" height="65" width="150"></a>
             <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -106,6 +106,7 @@
                 <div class="me-3">
                     <a href="/profilepage"><i class="bi bi-person-circle fs-4 text-dark"></i></a>
                 </div>
+                
             </div>
         </div>
     </nav>
@@ -118,7 +119,7 @@
     <main>
         <section class="payment-option w-50" id="creditCard">
             <h2>Credit Card</h2>
-            <img src="/images/credit.jpg" alt="Credit Card Icon">
+            <img id="img" src="/images/credit.jpg" alt="Credit Card Icon">
             <p>Securely pay with your credit card.</p>
             <a href="/creditcardpage">
                 <button onclick="selectPaymentOption()">Select</button></a>

@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid p-0">
-            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('images/bookstorelogo.jpg') }}" height="65" width="150"></a>
             <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
             <div class="row p-2">
 
                 <div class="col-md-5 d-flex justify-content-end m-auto">
-                    <img src="{{ asset('storage/' . $books->image) }}" width="70%">
+                    <img src="{{ asset('images/' . $books->image) }}" width="70%">
                 </div>
 
                 <div class="col-md-6 m-auto">

@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid p-0">
-            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65"
+            <a class="navbar-brand" href="#"><img src="{{ asset('/images/bookstorelogo.jpg') }}" height="65"
                     width="150"></a>
             <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -137,7 +137,7 @@
                             <div class="col p-2 text-center">
 
                                 <a href="/bookviewpage/{{ $books->id }}"><img
-                                        src="{{ asset('storage/' . $books->image) }}" alt=""
+                                        src="{{ asset('images/' . $books->image) }}" alt=""
                                         style="height: 70%; width:90%"></a>
                                 <div class="card-body p-2">
                                     <h6 class="card-title fw-bold">{{ $books->name }}</h6>

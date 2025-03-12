@@ -14,7 +14,7 @@
     <div class="m-auto mt-2 text-center">
         <div class="row m-auto justify-content-center">
             <div class="col m-4 p-0" style="width:250px">
-                <img src="/storage/books10.jpg" alt="" style="height: 350px; width:250px">
+                <img src="/images/book1.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">ZERO To ONE</h6>
                     <p class="card-text m-1">₹ 250.00 /-</p>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="col m-4" style="width:250px">
-                <img src="/storage/book2.jpg" alt="" style="height: 350px; width:250px">
+                <img src="/images/book2.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">The Book Of Lost Names</h6>
                     <p class="card-text m-1">₹ 175.00 /-</p>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col m-4" style="width:250px">
-                <img src="/storage/book3.jpg" alt="" style="height: 350px; width:250px">
+                <img src="/images/book3.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">RICH DAD POOR DAD</h6>
                     <p class="card-text m-1">₹ 270.00 /-</p>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="col m-4" style="width:250px">
-                <img src="/storage/book4.jpg" alt="" style="height: 350px; width:250px">
+                <img src="/images/book4.jpg" alt="" style="height: 350px; width:250px">
                 <div class="card-body p-2">
                     <h6 class="card-title fw-bold">The Name Of The Wind</h6>
                     <p class="card-text m-1">₹ 180.00 /-</p>
@@ -55,7 +55,7 @@
     <div class="mt-4 p-3" style="background-color: #f6f6f6">
         <div class="row p-4">
             <div class="col-md-5 text-center m-auto">
-                <img src="images/books8.jpg" alt="" width="70%">
+                <img src="/images/books8.jpg" alt="" width="70%">
             </div>
 
             <div class="col-md-7 m-auto" style="font-family:Georgia, 'Times New Roman', Times, serif">

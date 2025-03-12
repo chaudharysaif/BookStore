@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid p-0">
-            <a class="navbar-brand" href="#"><img src="{{ asset('storage/bookstorelogo.jpg') }}" height="65" width="150"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('images/bookstorelogo.jpg') }}" height="65" width="150"></a>
             <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -84,7 +84,7 @@
                     @foreach ($bookdata as $books)
                         <tr class="text-center">
 
-                            <td><img src="{{ asset('storage/' . $books->image) }}" alt="" height="125px"
+                            <td><img src="{{ asset('images/' . $books->image) }}" alt="" height="125px"
                                     width="75px"></td>
 
                             <td class="py-5">{{ $books->name }}</td>
